@@ -1,69 +1,30 @@
-!DOCTYPE html>
-<html lang="pt-br">
+<!DOCTYPE html>
+<html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
-  <title>Feliz Aniversário, Mãe Suzana!</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;700&display=swap" rel="stylesheet">
-
+  <title>Carta de Aniversário 💌</title>
   <style>
-    * {
-      box-sizing: border-box;
-    }
-
     body {
-      font-family: "Quicksand", sans-serif;
-      background: linear-gradient(to bottom right, #002b5c, #004080, #001f3f);
+      background-color: #001f3f; /* Azul-marinho */
       display: flex;
       justify-content: center;
       align-items: center;
-      min-height: 100vh;
-      margin: 0;
+      height: 100vh;
       overflow: hidden;
-      color: #333;
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
     }
 
     .envelope {
       position: relative;
-      width: 320px;
+      width: 300px;
       height: 200px;
-      perspective: 1000px;
+      background-color: #003366;
+      border-radius: 10px;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.4);
       cursor: pointer;
-      border-radius: 10px;
-    }
-
-    .envelope * {
-      transition: all 1s ease;
-    }
-
-    .back {
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(to bottom, #004080, #001f3f);
-      border-radius: 10px;
-      z-index: 0;
-    }
-
-    .front {
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(to bottom, #0066cc, #003366);
-      border-radius: 10px;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      color: white;
-      font-weight: bold;
-      z-index: 2;
-      overflow: hidden;
-    }
-
-    .front p {
-      margin: 5px 0;
+      transition: transform 0.6s ease-in-out;
     }
 
     .flap {
@@ -71,115 +32,113 @@
       top: 0;
       left: 0;
       width: 100%;
-      height: 60%;
-      background: linear-gradient(to bottom, #004080, #002b5c);
-      clip-path: polygon(0 0, 50% 100%, 100% 0);
+      height: 100%;
+      background-color: #004080;
+      clip-path: polygon(0 0, 50% 50%, 100% 0);
       transform-origin: top;
-      z-index: 3;
-      transition: transform 1s ease;
+      transition: transform 1s ease-in-out;
     }
 
-    .letter {
+    .card {
       position: absolute;
-      bottom: 0;
+      top: 50%;
       left: 50%;
-      transform: translateX(-50%);
-      width: 90%;
-      height: 130px;
-      background: #fff8dc;
-      border-radius: 10px;
-      padding: 20px;
+      width: 280px;
+      height: 180px;
+      background: linear-gradient(135deg, #002b5c, #004080);
+      border-radius: 15px;
+      color: white;
       text-align: center;
-      color: #6b4c00;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-      z-index: 1;
-      overflow: hidden;
-      transition: bottom 1s ease;
+      padding: 20px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.4);
+      transform: translate(-50%, -50%) translateY(100px);
+      opacity: 0;
+      transition: transform 1s ease, opacity 1s ease;
     }
 
-    .letter p {
-      margin: 5px 0;
-      font-size: 0.9rem;
+    .envelope.open .flap {
+      transform: rotateX(180deg);
+    }
+
+    .envelope.open .card {
+      transform: translate(-50%, -50%) translateY(-100px);
+      opacity: 1;
+    }
+
+    h1 {
+      font-size: 1.4em;
+      margin-bottom: 10px;
+      color: #ffffff;
+      animation: glow 2s ease-in-out infinite alternate;
+    }
+
+    @keyframes glow {
+      from { text-shadow: 0 0 10px #ffffff; }
+      to { text-shadow: 0 0 20px #a3bfff; }
+    }
+
+    .message {
+      font-size: 0.9em;
+      margin-bottom: 15px;
       line-height: 1.5;
     }
 
-    .letter img {
-      width: 40px;
-      margin-top: 8px;
-    }
-
-    /* Ao passar o mouse — carta sobe parcialmente */
-    .envelope:hover .flap {
-      transform: rotateX(150deg);
-      transform-origin: top;
-    }
-
-    .envelope:hover .letter {
-      bottom: 55px; /* Agora ela sobe visivelmente */
+    .signature {
+      font-style: italic;
+      color: #d0e0ff;
+      font-size: 0.85em;
     }
 
     /* Confetes */
     .confetti {
       position: absolute;
-      top: 0;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 100%;
-      height: 100%;
-      pointer-events: none;
-      z-index: 0;
-    }
-
-    .confetti .confetto {
-      position: absolute;
-      width: 10px;
-      height: 20px;
-      border-radius: 50%;
+      width: 8px;
+      height: 8px;
+      background-color: white;
       opacity: 0.8;
-      animation: fall 3s infinite linear;
+      top: -10px;
+      animation: fall 5s linear infinite;
     }
-
-    .confetto:nth-child(1) { left: 10%; background: #ff69b4; animation-delay: 0s; }
-    .confetto:nth-child(2) { left: 30%; background: #00bfff; animation-delay: 0.5s; }
-    .confetto:nth-child(3) { left: 50%; background: #32cd32; animation-delay: 1s; }
-    .confetto:nth-child(4) { left: 70%; background: #ff6347; animation-delay: 1.5s; }
-    .confetto:nth-child(5) { left: 90%; background: #ffff00; animation-delay: 2s; }
 
     @keyframes fall {
-      0% { transform: translateY(-50px); opacity: 1; }
-      100% { transform: translateY(100vh); opacity: 0.8; }
+      0% { transform: translateY(0) rotate(0deg); opacity: 1; }
+      100% { transform: translateY(100vh) rotate(720deg); opacity: 0; }
     }
   </style>
 </head>
 <body>
-
-  <div class="envelope">
+  <div class="envelope" id="envelope">
     <div class="flap"></div>
-
-    <div class="front">
-      <p>Para: <strong>Mãe Suzana</strong></p>
-      <p>De: <strong>Matheus, Gabriel, Isabela e Takeshi</strong></p>
+    <div class="card">
+      <h1>🎉 Feliz Aniversário, Mãe Suzana! 🎂</h1>
+      <p class="message">
+        Hoje celebramos o seu dia especial, mãe.  
+        Que sua vida seja repleta de amor, saúde, alegrias e sonhos realizados.  
+        Você é uma inspiração para todos nós. 💖
+      </p>
+      <p class="signature">
+        Com carinho,<br>
+        <strong>Matheus, Gabriel, Isabela e Takeshi</strong>
+      </p>
     </div>
-
-    <div class="letter">
-      <p>💙 Feliz Aniversário, mãe Suzana!</p>
-      <p>Que este dia seja repleto de amor, alegria e boas energias.  
-      Você é uma inspiração e merece todas as felicidades do mundo.  
-      Que sua vida continue sendo abençoada, doce e cheia de luz! 💐</p>
-      <p><strong>Com carinho,</strong><br>Matheus, Gabriel, Isabela e Takeshi</p>
-      <img src="https://cdn-icons-png.flaticon.com/512/254/254025.png" alt="Presente">
-    </div>
-
-    <div class="back"></div>
   </div>
 
-  <div class="confetti">
-    <div class="confetto"></div>
-    <div class="confetto"></div>
-    <div class="confetto"></div>
-    <div class="confetto"></div>
-    <div class="confetto"></div>
-  </div>
+  <script>
+    const envelope = document.getElementById('envelope');
+    envelope.addEventListener('click', () => {
+      envelope.classList.toggle('open');
+    });
 
+    // Confetes 🎊
+    for (let i = 0; i < 50; i++) {
+      const confetti = document.createElement('div');
+      confetti.classList.add('confetti');
+      confetti.style.left = Math.random() * 100 + 'vw';
+      confetti.style.backgroundColor = ['#ffffff', '#d0e0ff', '#a3bfff'][Math.floor(Math.random() * 3)];
+      confetti.style.animationDuration = (3 + Math.random() * 3) + 's';
+      confetti.style.width = confetti.style.height = (5 + Math.random() * 10) + 'px';
+      document.body.appendChild(confetti);
+    }
+  </script>
 </body>
 </html>

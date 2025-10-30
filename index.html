@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+!DOCTYPE html>
 <html lang="pt-br">
 <head>
   <meta charset="UTF-8">
@@ -37,7 +37,6 @@
       transition: all 1s ease;
     }
 
-    /* Parte de trás do envelope */
     .back {
       position: absolute;
       width: 100%;
@@ -47,7 +46,6 @@
       z-index: 0;
     }
 
-    /* Parte da frente */
     .front {
       position: absolute;
       width: 100%;
@@ -68,7 +66,6 @@
       margin: 5px 0;
     }
 
-    /* Aba superior (tampa) */
     .flap {
       position: absolute;
       top: 0;
@@ -79,9 +76,9 @@
       clip-path: polygon(0 0, 50% 100%, 100% 0);
       transform-origin: top;
       z-index: 3;
+      transition: transform 1s ease;
     }
 
-    /* Carta */
     .letter {
       position: absolute;
       bottom: 0;
@@ -97,6 +94,7 @@
       box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
       z-index: 1;
       overflow: hidden;
+      transition: bottom 1s ease;
     }
 
     .letter p {
@@ -110,14 +108,14 @@
       margin-top: 8px;
     }
 
-    /* Animação ao passar o mouse */
+    /* Ao passar o mouse — carta sobe parcialmente */
     .envelope:hover .flap {
-      transform: rotateX(160deg);
+      transform: rotateX(150deg);
       transform-origin: top;
     }
 
     .envelope:hover .letter {
-      bottom: 25px; /* sobe de forma controlada */
+      bottom: 55px; /* Agora ela sobe visivelmente */
     }
 
     /* Confetes */

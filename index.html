@@ -2,13 +2,12 @@
 <html lang="pt-br">
 <head>
   <meta charset="UTF-8">
-  <title>Feliz Aniversário!</title>
+  <title>Feliz Aniversário, Mãe Suzana!</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <!-- Fonte Quicksand -->
   <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;700&display=swap" rel="stylesheet">
 
-  <!-- CSS Completo -->
   <style>
     @import url(https://fonts.googleapis.com/css2?family=Quicksand:wght@400;700&display=swap);
 
@@ -18,7 +17,7 @@
 
     body {
       font-family: "Quicksand", sans-serif;
-      background: linear-gradient(to bottom right, #4f9fff, #0066cc, #005bb5); /* Novo fundo azul */
+      background: linear-gradient(to bottom right, #002b5c, #004080, #001f3f); /* Azul-marinho */
       color: #333;
       display: flex;
       justify-content: center;
@@ -26,9 +25,7 @@
       min-height: 100vh;
       margin: 0;
       padding: 1rem;
-      margin-top: 50px;
       overflow: hidden;
-      -webkit-tap-highlight-color: transparent;
       position: relative;
     }
 
@@ -43,80 +40,48 @@
       background: url('https://www.pngall.com/wp-content/uploads/5/Birthday-Cake-PNG-Free-Download.png') no-repeat center center;
       background-size: contain;
       z-index: -1;
+      opacity: 0.8;
     }
 
     .envelope {
       --duration: 1000ms;
-      --shadow-width: calc(var(--envelope-width) * 0.85);
-      --shadow-blur: 20px;
-
       --envelope-width: 300px;
       --envelope-height: 175px;
-      --envelope-clr-bg: #0066cc; /* Azul */
-      --envelope-clr-bg-side: #005bb5; /* Azul mais escuro */
-      --envelope-clr-bg-bottom: #004a99; /* Azul mais escuro */
-      --envelope-clr-bg-top: #0066cc; /* Azul */
+
+      --envelope-clr-bg: #004080;
+      --envelope-clr-bg-side: #002b5c;
+      --envelope-clr-bg-bottom: #001f3f;
+      --envelope-clr-bg-top: #003366;
       --envelope-clr-txt: #fff;
 
-      --envelope-transform-hover: rotateY(180deg);
-      --evelope-rotate-delay: calc(var(--duration) / 1);
-      --evelope-rotate-delay-hover: 0ms;
-
-      --letter-clr-bg: #fff8dc; /* cor creme clara para carta */
-      --letter-clr-text: #6b4c00; /* marrom escuro para texto */
-      --letter-font-size: 1rem;
-      --letter-delay: 0ms;
-      --letter-delay-hover: calc(var(--duration) * 1.25);
-
-      --letter-height: calc(var(--envelope-height) - 2rem);
-      --letter-height-hover: calc(var(--envelope-height) * 1.75);
-
-      --fold-rotate: rotateX(0deg);
-      --fold-zindex-hover: 0;
-      --fold-rotate-hover: rotateX(180deg);
-      --fold-delay: calc(var(--duration) / 2);
-      --fold-delay-hover: calc(var(--duration) * 0.75);
-
-      --front-font-size: 1rem;
+      --letter-clr-bg: #fff8dc;
+      --letter-clr-text: #6b4c00;
 
       position: relative;
       height: var(--envelope-height);
       width: var(--envelope-width);
       perspective: 1000px;
       cursor: pointer;
-
       box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
       transition: box-shadow 0.3s ease;
     }
 
     .envelope:hover {
-      --envelope-transform: var(--envelope-transform-hover, 0deg);
-      --evelope-rotate-delay: var(--evelope-rotate-delay-hover);
-      --shadow-transform: rotateY(180deg);
-      --fold-rotate: var(--fold-rotate-hover);
-      --fold-delay: var(--fold-delay-hover);
-      --fold-zindex: var(--fold-zindex-hover);
-      --letter-height: var(--letter-height-hover);
-      --letter-delay: var(--letter-delay-hover);
-
+      --envelope-transform: rotateY(180deg);
       box-shadow: 0 15px 40px rgba(0, 0, 0, 0.7);
     }
 
-    /* Shadow */
     .envelope::after {
       content: "";
       position: absolute;
       top: 110%;
       left: 50%;
-      width: var(--shadow-width);
+      width: 85%;
       height: 40px;
-      transition: var(--duration) ease-in-out;
-      transition-delay: var(--evelope-rotate-delay);
-      transform: var(--shadow-transform);
-      translate: -50% 0;
+      transform: translateX(-50%);
       border-radius: 50%;
-      background: rgba(56, 6, 6, 0.4);
-      filter: blur(var(--shadow-blur));
+      background: rgba(0, 0, 0, 0.4);
+      filter: blur(20px);
     }
 
     .envelope-inner {
@@ -124,10 +89,7 @@
       width: 100%;
       height: 100%;
       transition: var(--duration) ease-in-out;
-      transition-delay: var(--evelope-rotate-delay);
       transform-style: preserve-3d;
-      transform: var(--envelope-transform);
-      display: grid;
     }
 
     .envelope-front,
@@ -137,10 +99,7 @@
       width: 100%;
       height: 100%;
       background-color: var(--envelope-clr-bg);
-      -webkit-backface-visibility: hidden;
       backface-visibility: hidden;
-      perspective: 1000px;
-      isolation: isolate;
     }
 
     .envelope-front {
@@ -149,57 +108,35 @@
       place-content: center;
     }
 
-    .envelope-front .postage-stamp {
-      position: absolute;
-      top: 1em;
-      right: 0.5em;
-      width: 15%;
-    }
-
     .envelope-front .address {
       text-align: left;
-      font-size: var(--front-font-size);
+      font-size: 1rem;
     }
 
     .envelope-front .address > p > span:first-child {
-      font-family: system-ui;
-      font-weight: 200;
+      font-weight: 300;
     }
 
     .envelope-front .address > p > span:last-of-type {
-      font-weight: 800;
+      font-weight: 700;
     }
 
     .envelope-back {
       transform: rotateY(180deg);
+      background-color: var(--envelope-clr-bg);
     }
 
-    /* Back folds */
-    .envelope-back::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      z-index: 3;
-      background-image: conic-gradient(
-        transparent 60deg,
-        var(--envelope-clr-bg-side) 60deg 120deg,
-        var(--envelope-clr-bg-bottom) 120deg 240deg,
-        var(--envelope-clr-bg-side) 240deg 300deg,
-        transparent 300deg
-      );
-    }
-
-    /* Top fold which folds up on hover */
     .envelope-back .top-fold {
       position: absolute;
       inset: 0;
-      z-index: var(--fold-zindex, 10);
       background-color: var(--envelope-clr-bg-top);
       clip-path: polygon(0% 0%, 50% 55%, 100% 0%);
-      transform: var(--fold-rotate);
       transform-origin: top;
       transition: var(--duration) ease-in-out;
-      transition-delay: var(--fold-delay);
+    }
+
+    .envelope:hover .top-fold {
+      transform: rotateX(180deg);
     }
 
     .letter {
@@ -207,8 +144,8 @@
       bottom: 5px;
       left: 50%;
       width: 90%;
-      height: var(--letter-height);
-      font-size: var(--letter-font-size);
+      height: 150px;
+      font-size: 1rem;
       transform: translateX(-50%);
       background: var(--letter-clr-bg);
       z-index: 2;
@@ -218,30 +155,13 @@
       gap: 1rem;
       align-items: center;
       text-align: center;
-      transition: var(--duration) ease-in-out;
-      transition-delay: var(--letter-delay);
-      overflow: hidden;
       color: var(--letter-clr-text);
+      border-radius: 10px;
     }
 
-    .letter::before {
-      content: "";
-      position: absolute;
-      bottom: 30%;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 120px;
-      height: 40px;
-      background: url('https://upload.wikimedia.org/wikipedia/commons/thumb/3/3a/Moustache_font_awesome.svg/1200px-Moustache_font_awesome.svg.png') no-repeat center center;
-      background-size: contain;
-      pointer-events: none;
-    }
-
-    .highlight {
-      display: block;
+    .letter img {
+      width: 50px;
       margin-top: 10px;
-      font-size: 1.8rem;
-      font-weight: bold;
     }
 
     /* Confetes */
@@ -263,92 +183,56 @@
       width: 10px;
       height: 20px;
       border-radius: 50%;
-      background-color: #00bfff;
       animation: confetti-drop 3s infinite;
     }
 
-    .confetti .confetto:nth-child(1) {
-      left: 10%;
-      animation-delay: 0s;
-      background-color: #ff69b4;
-    }
-
-    .confetti .confetto:nth-child(2) {
-      left: 30%;
-      animation-delay: 0.5s;
-      background-color: #00bfff;
-    }
-
-    .confetti .confetto:nth-child(3) {
-      left: 50%;
-      animation-delay: 1s;
-      background-color: #32cd32;
-    }
-
-    .confetti .confetto:nth-child(4) {
-      left: 70%;
-      animation-delay: 1.5s;
-      background-color: #ff6347;
-    }
-
-    .confetti .confetto:nth-child(5) {
-      left: 90%;
-      animation-delay: 2s;
-      background-color: #ffff00;
-    }
+    .confetti .confetto:nth-child(1) { left: 10%; background-color: #ff69b4; }
+    .confetti .confetto:nth-child(2) { left: 30%; background-color: #00bfff; }
+    .confetti .confetto:nth-child(3) { left: 50%; background-color: #32cd32; }
+    .confetti .confetto:nth-child(4) { left: 70%; background-color: #ff6347; }
+    .confetti .confetto:nth-child(5) { left: 90%; background-color: #ffff00; }
 
     @keyframes confetti-drop {
-      0% {
-        opacity: 1;
-        transform: translateY(-50px);
-      }
-      100% {
-        opacity: 1;
-        transform: translateY(100vh);
-      }
+      0% { opacity: 1; transform: translateY(-50px); }
+      100% { opacity: 1; transform: translateY(100vh); }
     }
 
     @keyframes confetti-animation {
-      0% {
-        top: -10%;
-      }
-      100% {
-        top: 100%;
-      }
+      0% { top: -10%; }
+      100% { top: 100%; }
     }
-
   </style>
 </head>
 <body>
 
-  <div class="bolo"></div> <!-- Bolo de fundo -->
+  <div class="bolo"></div>
 
   <div class="envelope">
     <div class="envelope-inner">
       <div class="envelope-front">
         <div class="address">
-          <p><span>Para:</span> <span>Edson Akira Okubo</span></p>
-          <p><span>De:</span> <span>Matheus, Gabriel, Isabela, Suzana e Takeshi</span></p>
+          <p><span>Para:</span> <span>Mãe Suzana</span></p>
+          <p><span>De:</span> <span>Matheus, Gabriel, Isabela e Takeshi</span></p>
         </div>
       </div>
 
       <div class="envelope-back">
         <div class="top-fold"></div>
         <div class="letter">
-          <p>Feliz Aniversário! Que Deus abençoe você sempre! Desejo muitas felicidades e tudo de bom!</p>
-          <img class="custom-image" src="https://cdn-icons-png.flaticon.com/512/254/254025.png" alt="Imagem de presente">
+          <p>
+            Feliz Aniversário, mãe Suzana! 💙  
+            Que seu dia seja cheio de sorrisos, amor e muita luz.  
+            Você é nossa força, nosso exemplo e motivo de orgulho.  
+            Desejamos que cada novo ano traga ainda mais alegrias e conquistas.  
+          </p>
+          <p><strong>Com carinho,</strong><br>Matheus, Gabriel, Isabela e Takeshi 💐</p>
+          <img src="https://cdn-icons-png.flaticon.com/512/254/254025.png" alt="Presente">
         </div>
       </div>
     </div>
   </div>
 
-  <!-- Confetes -->
   <div class="confetti">
-    <div class="confetto"></div>
-    <div class="confetto"></div>
-    <div class="confetto"></div>
-    <div class="confetto"></div>
-    <div class="confetto"></div>
     <div class="confetto"></div>
     <div class="confetto"></div>
     <div class="confetto"></div>
@@ -358,3 +242,4 @@
 
 </body>
 </html>
+

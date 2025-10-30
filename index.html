@@ -21,55 +21,38 @@
       min-height: 100vh;
       margin: 0;
       overflow: hidden;
-      position: relative;
       color: #333;
     }
 
-    .bolo {
-      position: absolute;
-      bottom: 20px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 200px;
-      height: 200px;
-      background: url('https://www.pngall.com/wp-content/uploads/5/Birthday-Cake-PNG-Free-Download.png') no-repeat center;
-      background-size: contain;
-      opacity: 0.8;
-      z-index: -1;
-    }
-
     .envelope {
+      position: relative;
       width: 320px;
       height: 200px;
-      position: relative;
       perspective: 1000px;
       cursor: pointer;
-      overflow: hidden; /* impede que a carta ultrapasse os limites */
       border-radius: 10px;
     }
 
+    .envelope * {
+      transition: all 1s ease;
+    }
+
+    /* Parte de trás do envelope */
     .back {
+      position: absolute;
       width: 100%;
       height: 100%;
       background: linear-gradient(to bottom, #004080, #001f3f);
       border-radius: 10px;
-      position: absolute;
-      top: 0;
-      left: 0;
-      transform: rotateY(180deg);
-      backface-visibility: hidden;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
       z-index: 0;
     }
 
+    /* Parte da frente */
     .front {
+      position: absolute;
       width: 100%;
       height: 100%;
       background: linear-gradient(to bottom, #0066cc, #003366);
-      position: absolute;
-      top: 0;
-      left: 0;
-      backface-visibility: hidden;
       border-radius: 10px;
       display: flex;
       flex-direction: column;
@@ -77,14 +60,15 @@
       align-items: center;
       color: white;
       font-weight: bold;
-      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5);
       z-index: 2;
+      overflow: hidden;
     }
 
     .front p {
-      margin: 4px 0;
+      margin: 5px 0;
     }
 
+    /* Aba superior (tampa) */
     .flap {
       position: absolute;
       top: 0;
@@ -94,33 +78,30 @@
       background: linear-gradient(to bottom, #004080, #002b5c);
       clip-path: polygon(0 0, 50% 100%, 100% 0);
       transform-origin: top;
-      transition: transform 1s ease;
-      border-top-left-radius: 8px;
-      border-top-right-radius: 8px;
       z-index: 3;
     }
 
+    /* Carta */
     .letter {
       position: absolute;
-      bottom: 10px;
+      bottom: 0;
       left: 50%;
       transform: translateX(-50%);
       width: 90%;
-      height: 140px;
+      height: 130px;
       background: #fff8dc;
       border-radius: 10px;
       padding: 20px;
       text-align: center;
       color: #6b4c00;
       box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-      transition: all 1s ease;
       z-index: 1;
       overflow: hidden;
     }
 
     .letter p {
       margin: 5px 0;
-      font-size: 0.95rem;
+      font-size: 0.9rem;
       line-height: 1.5;
     }
 
@@ -129,15 +110,17 @@
       margin-top: 8px;
     }
 
+    /* Animação ao passar o mouse */
     .envelope:hover .flap {
-      transform: rotateX(180deg);
+      transform: rotateX(160deg);
+      transform-origin: top;
     }
 
-    /* Aqui a carta sobe de forma controlada */
     .envelope:hover .letter {
-      transform: translate(-50%, -40px);
+      bottom: 25px; /* sobe de forma controlada */
     }
 
+    /* Confetes */
     .confetti {
       position: absolute;
       top: 0;
@@ -146,7 +129,7 @@
       width: 100%;
       height: 100%;
       pointer-events: none;
-      z-index: 1;
+      z-index: 0;
     }
 
     .confetti .confetto {
@@ -172,10 +155,9 @@
 </head>
 <body>
 
-  <div class="bolo"></div>
-
   <div class="envelope">
     <div class="flap"></div>
+
     <div class="front">
       <p>Para: <strong>Mãe Suzana</strong></p>
       <p>De: <strong>Matheus, Gabriel, Isabela e Takeshi</strong></p>
@@ -202,6 +184,4 @@
   </div>
 
 </body>
-  </html>
-
-
+</html>
